@@ -46,43 +46,43 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="buttom text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-mx-Qwu">
-                                <rect key="frame" x="256" y="507" width="89" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="top text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IL8-kf-c5d">
-                                <rect key="frame" x="270" y="90" width="60" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EA7-IZ-2d3">
+                                <rect key="frame" x="284" y="77" width="33" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfY-aB-y1t">
+                                <rect key="frame" x="268" y="520" width="65" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XIx-O7-sQm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7qI-Mh-KGf"/>
-                            <constraint firstItem="6bY-mx-Qwu" firstAttribute="centerX" secondItem="XIx-O7-sQm" secondAttribute="centerX" constant="0.5" id="HVJ-3B-FRT"/>
-                            <constraint firstItem="XIx-O7-sQm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NBy-qH-uyq"/>
-                            <constraint firstItem="n4X-oh-wdC" firstAttribute="top" secondItem="XIx-O7-sQm" secondAttribute="top" id="NU2-M3-MRD"/>
-                            <constraint firstItem="XIx-O7-sQm" firstAttribute="top" secondItem="IL8-kf-c5d" secondAttribute="bottom" constant="-91" id="NdM-Qi-1Vd"/>
-                            <constraint firstItem="X8a-pE-6db" firstAttribute="centerX" secondItem="XIx-O7-sQm" secondAttribute="centerX" id="RVo-3h-7Yk"/>
-                            <constraint firstItem="6bY-mx-Qwu" firstAttribute="top" secondItem="XIx-O7-sQm" secondAttribute="bottom" constant="-93" id="TLg-fm-ukH"/>
-                            <constraint firstItem="X8a-pE-6db" firstAttribute="leading" secondItem="n4X-oh-wdC" secondAttribute="leading" id="WjU-ki-b26"/>
-                            <constraint firstItem="XIx-O7-sQm" firstAttribute="centerX" secondItem="IL8-kf-c5d" secondAttribute="centerX" id="cPX-cm-OXk"/>
-                            <constraint firstItem="X8a-pE-6db" firstAttribute="trailing" secondItem="n4X-oh-wdC" secondAttribute="trailing" id="ccS-ZX-9Px"/>
-                            <constraint firstItem="n4X-oh-wdC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gY9-8s-RVW"/>
-                            <constraint firstItem="XIx-O7-sQm" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="s7g-B4-KLU"/>
-                            <constraint firstItem="XIx-O7-sQm" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="w2r-ZV-k6z"/>
-                            <constraint firstItem="X8a-pE-6db" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="w4W-yQ-Gzf"/>
+                            <constraint firstItem="XIx-O7-sQm" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="8fu-Jj-vYf"/>
+                            <constraint firstItem="XIx-O7-sQm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Bhr-PN-gkz"/>
+                            <constraint firstAttribute="trailing" secondItem="n4X-oh-wdC" secondAttribute="trailing" id="Ejq-0l-HVg"/>
+                            <constraint firstItem="X8a-pE-6db" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Ohl-hB-DaM"/>
+                            <constraint firstItem="XIx-O7-sQm" firstAttribute="centerX" secondItem="EA7-IZ-2d3" secondAttribute="centerX" id="cbr-sA-TOI"/>
+                            <constraint firstItem="X8a-pE-6db" firstAttribute="top" secondItem="sfY-aB-y1t" secondAttribute="bottom" constant="19" id="dBw-JC-cY8"/>
+                            <constraint firstItem="n4X-oh-wdC" firstAttribute="trailing" secondItem="X8a-pE-6db" secondAttribute="trailing" id="dXu-aW-vpP"/>
+                            <constraint firstItem="X8a-pE-6db" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dp9-DI-yyN"/>
+                            <constraint firstItem="sfY-aB-y1t" firstAttribute="centerX" secondItem="X8a-pE-6db" secondAttribute="centerX" id="ehQ-Bd-uMh"/>
+                            <constraint firstItem="XIx-O7-sQm" firstAttribute="top" secondItem="n4X-oh-wdC" secondAttribute="top" id="g4D-JC-Aqf"/>
+                            <constraint firstItem="X8a-pE-6db" firstAttribute="leading" secondItem="n4X-oh-wdC" secondAttribute="leading" id="m9h-4f-zzd"/>
+                            <constraint firstItem="XIx-O7-sQm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qEY-a5-c3v"/>
+                            <constraint firstItem="EA7-IZ-2d3" firstAttribute="top" secondItem="n4X-oh-wdC" secondAttribute="bottom" constant="13" id="suC-25-OG9"/>
+                            <constraint firstItem="EA7-IZ-2d3" firstAttribute="centerX" secondItem="n4X-oh-wdC" secondAttribute="centerX" id="voT-In-Qvi"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="albumButton" destination="xZk-7z-Z4f" id="4TQ-IB-3Rk"/>
+                        <outlet property="bottomTextField" destination="sfY-aB-y1t" id="dwV-Yc-b4i"/>
                         <outlet property="cameraButton" destination="Fp1-bA-Nec" id="Pme-Zp-umh"/>
                         <outlet property="cancelButton" destination="oUX-1v-U1x" id="ykO-ET-kzr"/>
                         <outlet property="memeImage" destination="XIx-O7-sQm" id="Ttq-cs-ATu"/>
                         <outlet property="shareButton" destination="XUm-26-27Y" id="fCK-sZ-HG7"/>
+                        <outlet property="topTextField" destination="EA7-IZ-2d3" id="oi8-8G-PxU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
