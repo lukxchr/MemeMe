@@ -17,7 +17,10 @@ class MemeTextFieldDelegate: NSObject, UITextFieldDelegate
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.becomeFirstResponder()
-        textField.text = ""
+        //clear if user starts editing default values
+        if (textField.text == "TOP") || (textField.text == "BOTTOM") {
+            textField.text = ""
+        }
         
     }
     

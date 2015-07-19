@@ -24,6 +24,8 @@ class MemeEditorViewController: UIViewController,
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var toolbar: UIToolbar!
     
     //delegates
     let memeTextFieldDelegate = MemeTextFieldDelegate()
@@ -34,6 +36,8 @@ class MemeEditorViewController: UIViewController,
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName : -3.0,
     ]
+    
+    var memedImage: UIImage! //store image with text overlayed in this variable
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,11 @@ class MemeEditorViewController: UIViewController,
         //set delegates
         topTextField.delegate = memeTextFieldDelegate
         bottomTextField.delegate = memeTextFieldDelegate
+        
+        //disable share button for now and enable when user adds an image
+        shareButton.enabled = false
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,7 +77,6 @@ class MemeEditorViewController: UIViewController,
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(imagePicker, animated: true, completion: nil)
-     
     }
     
     @IBAction func pickAnImageFromCamera(sender: UIBarButtonItem) {
@@ -81,6 +89,8 @@ class MemeEditorViewController: UIViewController,
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             memeImage.image = chosenImage
+            //enable share button after user adds image
+            shareButton.enabled = true
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -88,6 +98,16 @@ class MemeEditorViewController: UIViewController,
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func shareMeme(sender: UIBarButtonItem) {
+        memedImage = generateMemedImage()
+        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        self.presentViewController(activityController, animated: true, completion: nil)
+//        let com = activityController.completionWithItemsHandler
+//        println("\(com)")
+        activityController.completionWithItemsHandler = saveHandler
+    }
+    
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:"    , name: UIKeyboardWillShowNotification, object: nil)
@@ -114,6 +134,44 @@ class MemeEditorViewController: UIViewController,
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.CGRectValue().height
+    }
+    
+    func generateMemedImage() -> UIImage
+    {
+        //hide navbar and toolbar
+        navBar.hidden = true
+        toolbar.hidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame,
+            afterScreenUpdates: true)
+        let memedImage : UIImage =
+        UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //show navbar and toolbar
+        navBar.hidden = false
+        toolbar.hidden = false
+        
+        return memedImage
+    }
+    
+    func save() {
+        //Create the meme
+        let meme = Meme(topText: topTextField.text!,
+            bottomText: bottomTextField.text!,
+            image: memeImage.image!,
+            memedImage: memedImage)
+        println("\(meme)")
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        appDelegate.memes.append(meme)
+        self.performSegueWithIdentifier("showSentMemes", sender: self)
+    }
+    
+    func saveHandler(activityType:String!, completed: Bool,
+        returnedItems: [AnyObject]!, error: NSError!) {
+            save()
     }
 
 }
