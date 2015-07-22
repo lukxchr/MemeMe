@@ -15,7 +15,8 @@ class SentMemesViewController: UIViewController,
 {
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //populate memes array with a copies launchscreen (to fill up table and collection views)
         for ix in 1...30 {
         memes.append(
             Meme(topText: "dummy", bottomText: "\(ix)", image: UIImage(), memedImage: UIImage(named: "LaunchImage")!)

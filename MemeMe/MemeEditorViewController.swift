@@ -196,7 +196,6 @@ class MemeEditorViewController: UIViewController,
         if (textField.text == "TOP") || (textField.text == "BOTTOM") {
             textField.text = ""
         }
-        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
