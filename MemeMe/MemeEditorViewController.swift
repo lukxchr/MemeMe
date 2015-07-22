@@ -26,6 +26,7 @@ class MemeEditorViewController: UIViewController,
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var memeImageViewHeightConstraint: NSLayoutConstraint!
     
     //delegates
     let memeTextFieldDelegate = MemeTextFieldDelegate()
@@ -50,6 +51,9 @@ class MemeEditorViewController: UIViewController,
         
         //disable share button for now and enable when user adds an image
         shareButton.enabled = false
+        
+        memeImageViewHeightConstraint.constant =
+            UIScreen.mainScreen().applicationFrame.size.height - 50
         
         
     }
@@ -88,7 +92,29 @@ class MemeEditorViewController: UIViewController,
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            memeImage.image = chosenImage
+            
+            let bounds = CGRect(origin: CGPointZero, size: chosenImage.size)
+            
+            memeImage.bounds = bounds
             memeImage.image = chosenImage
+            
+            //memeImageViewHeightConstraint.constant = memeImage.image!.size.height
+                //?? memeImageViewHeightConstraint.constant
+            //println("new height: \(memeImage.image!.size.height); width: \(memeImage.image!.size.width)")
+            //println(":: \(memeImage.image!.size.height / memeImage.image!.size.width)")
+            
+            let screenWidth = UIScreen.mainScreen().applicationFrame.size.width
+            let imageHeightWidthRatio = chosenImage.size.height / chosenImage.size.width
+            memeImageViewHeightConstraint.constant = screenWidth * imageHeightWidthRatio
+            
+            //println("view: \(memeImage.frame.size)  image: \(memeImage.image!.size) ")
+            //println("\(self.view.subviews[0])")
+            
+            
+            //self.view.addSubview(memeImage.image!.drawAtPoint(CGPoint(x: 100.0, y: 100.0)))
+            //self.view.setNeedsDisplay()
+            
             //enable share button after user adds image
             shareButton.enabled = true
         }
@@ -143,12 +169,47 @@ class MemeEditorViewController: UIViewController,
         toolbar.hidden = true
         
         // Render view to an image
+//        println("sel.view frame \(self.view.frame.origin) -- \(self.view.frame.size)")
+//        println("memeImage frame \(self.memeImage.frame.origin) -- \(self.memeImage.frame.size)")
+//        UIGraphicsBeginImageContext(self.view.frame.size)
+//        self.view.drawViewHierarchyInRect(self.view.frame,
+//            afterScreenUpdates: true)
+//        let memedImage : UIImage =
+//        UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+        
+        
+        // Render view to an image
+//        UIGraphicsBeginImageContext(self.view.frame.size)
+//        
+//        let rect = CGRect(origin: self.memeImage.frame.origin, size: self.memeImage.frame.size)
+//        
+//        self.view.drawViewHierarchyInRect(rect,
+//            afterScreenUpdates: true)
+//        let memedImage : UIImage =
+//        UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+        
+        
+//        let rect = UIScreen.mainScreen().bounds
+//        println("UIScreen.mainScreen().bounds:  \(UIScreen.mainScreen().bounds)")
+//        UIGraphicsBeginImageContext(rect.size)
+//        let context = UIGraphicsGetCurrentContext()
+//        self.view.layer.renderInContext(context)
+//        let memedImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+        
+        
         UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame,
-            afterScreenUpdates: true)
-        let memedImage : UIImage =
-        UIGraphicsGetImageFromCurrentImageContext()
+        self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
+        let viewImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        let rect = CGRect(origin: memeImage.frame.origin, size: memeImage.frame.size)
+        let imageRef = CGImageCreateWithImageInRect(viewImage.CGImage, rect)
+        let memedImage = UIImage(CGImage: imageRef)!
+        
+        
+        
         
         //show navbar and toolbar
         navBar.hidden = false

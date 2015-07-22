@@ -9,18 +9,25 @@
 import Foundation
 import UIKit
 
-class SentMemesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class SentMemesViewController: UIViewController,
+    UITableViewDelegate, UITableViewDataSource,
+    UICollectionViewDataSource
 {
     override func viewDidLoad() {
         super.viewDidLoad()
         //create some fake memes and add them to the model
-        for ix in 1...10 {
+        //let img = UIImage(named: "LaunchScreen")!
+//        let placeholderImageView = UIImageView(frame: CGRectMake(100, 150, 150, 150))
+//        placeholderImageView.image = UIImage()
+        //println("placeholderImage: size:\(placeholderImage.size)")
+        //let img = UIImage()
+        for ix in 1...30 {
         memes.append(
-            Meme(topText: "dummy", bottomText: "\(ix)", image: UIImage(), memedImage: UIImage())
+            Meme(topText: "dummy", bottomText: "\(ix)", image: UIImage(), memedImage: UIImage(named: "LaunchImage")!)
         )
         }
-        println("\(memes)")
-        println("SentMemesView did load")
+//        println("\(memes)")
+//        println("SentMemesView did load")
     }
     
     
@@ -41,21 +48,6 @@ class SentMemesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-//        let cell = tableView.dequeueReusableCellWithIdentifier("VillainCell") as! UITableViewCell
-//        let villain = self.allVillains[indexPath.row]
-//        
-//        // Set the name and image
-//        cell.textLabel?.text = villain.name
-//        cell.imageView?.image = UIImage(named: villain.imageName)
-//        
-//        // If the cell has a detail label, we will put the evil scheme in.
-//        if let detailTextLabel = cell.detailTextLabel {
-//            detailTextLabel.text = "Scheme: \(villain.evilScheme)"
-//        }
-//        
-//        return cell
-        //println("tableView cell")
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("memeCell") as! UITableViewCell
         let meme = self.memes[indexPath.row]
         cell.textLabel?.text = "\(meme.topText) \(meme.bottomText)"
@@ -66,10 +58,36 @@ class SentMemesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-//        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("VillainDetailViewController") as! VillainDetailViewController
-//        detailController.villain = self.allVillains[indexPath.row]
-//        self.navigationController!.pushViewController(detailController, animated: true)
-        //println("didSelectRowAtIndexPath")
+       let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
+        detailController.meme = self.memes[indexPath.row]
+        self.navigationController!.pushViewController(detailController, animated: true)
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        println("\(self.memes.count)")
+        return self.memes.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
+        let meme = self.memes[indexPath.row]
+        
+        // Set the name and image
+//        cell.bottomLabel.text = meme.bottomText
+//        cell.topLabel.text = meme.topText
+        cell.imageView.image = meme.memedImage
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath:NSIndexPath)
+    {
+        
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
+        detailController.meme = self.memes[indexPath.row]
+        self.navigationController!.pushViewController(detailController, animated: true)
         
     }
     

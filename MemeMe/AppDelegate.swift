@@ -13,10 +13,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var memes = [Meme]()
+    //let defaults = NSUserDefaults.standardUserDefaults()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //testing nsuserdefaults
+//        println("AppDelegate.application: \(defaults)")
+//        if let storedValues = defaults.arrayForKey("values") as? [String] {
+//            println("Stored values: \(storedValues)")
+//            defaults.setObject(storedValues + ["new"], forKey: "values")
+//        } else {
+//            println("Failed to read stored values. Creating an instance...")
+//            defaults.setObject(["val1"], forKey: "values")
+//        }
+        
+//        if let storedMemes = defaults.arrayForKey("memes") as? [Meme] {
+//            memes = storedMemes
+//        } else {
+//            println("No memes in memory")
+//        }
+        
         return true
     }
 
@@ -40,6 +58,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+//        println("applicationWillTerminate called")
+//        if let storedMemes = defaults.arrayForKey("memes") as? [Meme] {
+//            defaults.setObject(storedMemes + memes, forKey: "memes")
+//            println("Saved memes.")
+//        } else {
+//            defaults.setObject(memes, forKey: "memes")
+//            println("Created new object. Saved memes.")
+//        }
+        
     }
 
 
