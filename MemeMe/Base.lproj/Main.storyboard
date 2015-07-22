@@ -259,7 +259,6 @@
         <!--Memes-->
         <scene sceneID="Qpt-XB-QYn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mEm-iA-gbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Memes" id="mtU-PF-wZB" customClass="SentMemesViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pxf-U7-3jG"/>
@@ -300,6 +299,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mEm-iA-gbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2208" y="1514"/>
         </scene>

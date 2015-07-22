@@ -15,34 +15,24 @@ class SentMemesViewController: UIViewController,
 {
     override func viewDidLoad() {
         super.viewDidLoad()
-        //create some fake memes and add them to the model
-        //let img = UIImage(named: "LaunchScreen")!
-//        let placeholderImageView = UIImageView(frame: CGRectMake(100, 150, 150, 150))
-//        placeholderImageView.image = UIImage()
-        //println("placeholderImage: size:\(placeholderImage.size)")
-        //let img = UIImage()
+
         for ix in 1...30 {
         memes.append(
             Meme(topText: "dummy", bottomText: "\(ix)", image: UIImage(), memedImage: UIImage(named: "LaunchImage")!)
         )
+            
         }
-//        println("\(memes)")
-//        println("SentMemesView did load")
     }
-    
     
     var memes = (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     
-    
     @IBAction func addMeme(sender: UIBarButtonItem) {
-        
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         self.navigationController?.presentViewController(vc, animated: false, completion: nil)
     }
     
-    
+    //MARK: TableView delegate methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //println("tableView \(memes.count)")
         return memes.count
     }
     
@@ -63,7 +53,7 @@ class SentMemesViewController: UIViewController,
         self.navigationController!.pushViewController(detailController, animated: true)
     }
     
-    
+    //MARK: CollectionView delegate methods
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         println("\(self.memes.count)")
         return self.memes.count
@@ -73,26 +63,14 @@ class SentMemesViewController: UIViewController,
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = self.memes[indexPath.row]
-        
-        // Set the name and image
-//        cell.bottomLabel.text = meme.bottomText
-//        cell.topLabel.text = meme.topText
         cell.imageView.image = meme.memedImage
-        
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath:NSIndexPath)
     {
-        
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = self.memes[indexPath.row]
         self.navigationController!.pushViewController(detailController, animated: true)
-        
     }
-    
-    
-    
-    
-    
 }

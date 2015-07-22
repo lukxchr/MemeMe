@@ -9,11 +9,7 @@
 import UIKit
 
 class MemeDetailViewController: UIViewController {
-    
-    
     @IBOutlet weak var memeImageView: UIImageView!
-    
-    //let memes = (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     var meme: Meme?
 
     override func viewDidLoad() {
@@ -22,6 +18,4 @@ class MemeDetailViewController: UIViewController {
             self.memeImageView.image = memedImage
         }
     }
-    
-    
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B56D0161B57A90C00C582B1 /* MemeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56D0151B57A90C00C582B1 /* MemeTextFieldDelegate.swift */; };
 		4B56D0181B57CA0D00C582B1 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56D0171B57CA0D00C582B1 /* Meme.swift */; };
 		4B56D01A1B5801C800C582B1 /* SentMemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56D0191B5801C800C582B1 /* SentMemesViewController.swift */; };
 		4B56D01C1B5BA36A00C582B1 /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56D01B1B5BA36A00C582B1 /* MemeDetailViewController.swift */; };
@@ -33,7 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B56D0151B57A90C00C582B1 /* MemeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTextFieldDelegate.swift; sourceTree = "<group>"; };
 		4B56D0171B57CA0D00C582B1 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		4B56D0191B5801C800C582B1 /* SentMemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesViewController.swift; sourceTree = "<group>"; };
 		4B56D01B1B5BA36A00C582B1 /* MemeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
@@ -70,14 +68,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B56D0141B57A8CE00C582B1 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				4B56D0151B57A90C00C582B1 /* MemeTextFieldDelegate.swift */,
-			);
-			name = Delegates;
-			sourceTree = "<group>";
-		};
 		4BBF1AC91B550CF900777586 = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +89,6 @@
 		4BBF1AD41B550CFA00777586 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
-				4B56D0141B57A8CE00C582B1 /* Delegates */,
 				4BBF1AD71B550CFA00777586 /* AppDelegate.swift */,
 				4BBF1AD91B550CFA00777586 /* MemeEditorViewController.swift */,
 				4B56D0251B5F927A00C582B1 /* MemeTableViewCell.swift */,
@@ -248,7 +237,6 @@
 				4B56D01A1B5801C800C582B1 /* SentMemesViewController.swift in Sources */,
 				4B56D01C1B5BA36A00C582B1 /* MemeDetailViewController.swift in Sources */,
 				4B56D01E1B5BF26E00C582B1 /* MemeCollectionViewCell.swift in Sources */,
-				4B56D0161B57A90C00C582B1 /* MemeTextFieldDelegate.swift in Sources */,
 				4BBF1AD81B550CFA00777586 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
